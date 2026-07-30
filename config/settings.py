@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "rest_framework",
+    "drf_yasg",
     "django_filters",
     "corsheaders",
 
@@ -48,7 +49,6 @@ INSTALLED_APPS = [
     "habits",
     "telegram_bot",
 ]
-
 
 
 
