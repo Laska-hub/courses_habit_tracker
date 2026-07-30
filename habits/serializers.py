@@ -7,9 +7,22 @@ from habits.validators import validate_habit
 class HabitSerializer(serializers.ModelSerializer):
     class Meta:
         model = Habit
-        fields = "__all__"
+        fields = (
+            "id",
+            "place",
+            "time",
+            "action",
+            "is_pleasant",
+            "related_habit",
+            "period",
+            "reward",
+            "execution_time",
+            "is_public",
+            "created_at",
+            "updated_at",
+        )
         read_only_fields = (
-            "user",
+            "id",
             "created_at",
             "updated_at",
         )
@@ -17,3 +30,4 @@ class HabitSerializer(serializers.ModelSerializer):
     def validate(self, data):
         validate_habit(data)
         return data
+

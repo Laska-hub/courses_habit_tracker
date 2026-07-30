@@ -29,7 +29,7 @@ def validate_habit(data):
         )
 
     # Время выполнения не больше 120 секунд
-    if execution_time and execution_time > 120:
+    if execution_time is not None and execution_time > 120:
         errors["execution_time"] = (
             "Время выполнения не должно превышать 120 секунд."
         )
