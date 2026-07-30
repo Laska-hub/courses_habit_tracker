@@ -43,7 +43,12 @@ INSTALLED_APPS = [
     "rest_framework",
     "django_filters",
     "corsheaders",
+
+    "users",
+    "habits",
+    "telegram_bot",
 ]
+
 
 
 
@@ -158,3 +163,4 @@ REST_FRAMEWORK = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+AUTH_USER_MODEL = "users.User"
