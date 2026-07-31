@@ -6,6 +6,9 @@ from habits.pagination import HabitPagination
 from habits.permissions import IsOwner
 from habits.serializers import HabitSerializer
 
+from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated
+
 
 class HabitViewSet(viewsets.ModelViewSet):
     """
@@ -29,3 +32,9 @@ class HabitViewSet(viewsets.ModelViewSet):
             user=self.request.user
         )
 
+class PublicHabitListAPIView(generics.ListAPIView):
+    serializer_class = HabitSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = HabitPagination
+
+    queryset = Habit.objects.filter(is_public=True)

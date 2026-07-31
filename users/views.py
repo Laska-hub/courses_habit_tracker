@@ -1,5 +1,4 @@
 from django.contrib.auth import get_user_model
-
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
 
@@ -7,6 +6,8 @@ from users.serializers import (
     RegisterSerializer,
     UserSerializer,
 )
+
+from rest_framework import generics
 
 
 User = get_user_model()
@@ -33,4 +34,6 @@ class UserProfileView(generics.RetrieveAPIView):
 
     def get_object(self):
         return self.request.user
+
+
 

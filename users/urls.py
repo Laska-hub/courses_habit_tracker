@@ -5,7 +5,6 @@ from users.views import (
     UserProfileView,
 )
 
-
 urlpatterns = [
     path(
         "register/",
