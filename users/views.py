@@ -1,13 +1,12 @@
 from django.contrib.auth import get_user_model
+
 from rest_framework import generics
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 
 from users.serializers import (
     RegisterSerializer,
     UserSerializer,
 )
-
-from rest_framework import generics
 
 
 User = get_user_model()
@@ -25,15 +24,15 @@ class RegisterView(generics.CreateAPIView):
     )
 
 
-class UserProfileView(generics.RetrieveAPIView):
+class UserProfileView(generics.RetrieveUpdateAPIView):
     """
     Current user profile.
     """
 
     serializer_class = UserSerializer
+    permission_classes = (
+        IsAuthenticated,
+    )
 
     def get_object(self):
         return self.request.user
-
-
-
