@@ -8,15 +8,21 @@ def send_telegram_message(chat_id, message):
         f"bot{settings.TELEGRAM_BOT_TOKEN}/sendMessage"
     )
 
-    response = requests.post(
-        url,
-        data={
-            "chat_id": chat_id,
-            "text": message,
-        },
-        timeout=10,
-    )
+    data = {
+        "chat_id": chat_id,
+        "text": message,
+    }
 
-    response.raise_for_status()
+    try:
+        response = requests.post(
+            url,
+            data=data,
+            timeout=10,
+        )
+        response.raise_for_status()
+        return response.json()
 
-    return response.json()
+    except requests.RequestException as error:
+        return {
+            "error": str(error),
+        }
