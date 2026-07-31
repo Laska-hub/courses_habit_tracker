@@ -176,3 +176,7 @@ CELERY_ACCEPT_CONTENT = [
 CELERY_TASK_SERIALIZER = "json"
 
 CELERY_TIMEZONE = TIME_ZONE
+
+CELERY_BEAT_SCHEDULER = (
+    "django_celery_beat.schedulers:DatabaseScheduler"
+)
