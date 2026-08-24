@@ -30,4 +30,3 @@ class HabitSerializer(serializers.ModelSerializer):
     def validate(self, data):
         validate_habit(data)
         return data
-

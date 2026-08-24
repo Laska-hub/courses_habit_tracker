@@ -37,3 +37,10 @@ dev = [
     "isort (>=8.0.1,<9.0.0)",
     "flake8 (>=7.3.0,<8.0.0)"
 ]
+
+[tool.black]
+target-version = ["py312"]
+line-length = 88
+
+[tool.isort]
+profile = "black"

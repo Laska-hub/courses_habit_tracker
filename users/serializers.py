@@ -1,7 +1,6 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-
 User = get_user_model()
 
 
@@ -19,9 +18,7 @@ class UserSerializer(serializers.ModelSerializer):
             "last_name",
             "telegram_chat_id",
         )
-        read_only_fields = (
-            "id",
-        )
+        read_only_fields = ("id",)
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -44,8 +41,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        user = User.objects.create_user(
-            **validated_data
-        )
+        user = User.objects.create_user(**validated_data)
 
         return user

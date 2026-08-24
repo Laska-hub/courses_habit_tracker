@@ -6,7 +6,6 @@ from rest_framework.test import APITestCase
 from habits.models import Habit
 from habits.validators import validate_habit
 
-
 User = get_user_model()
 
 
@@ -122,11 +121,7 @@ class HabitTests(APITestCase):
             status.HTTP_204_NO_CONTENT,
         )
 
-        self.assertFalse(
-            Habit.objects.filter(
-                id=habit.id
-            ).exists()
-        )
+        self.assertFalse(Habit.objects.filter(id=habit.id).exists())
 
     def test_validator_reward_and_related_habit(self):
         pleasant_habit = Habit.objects.create(
