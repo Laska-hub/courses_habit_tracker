@@ -122,16 +122,15 @@ jobs:
           script: |
             if [ ! -d "$HOME/courses_habit_tracker/.git" ]; then
               git clone https://github.com/Laska-hub/courses_habit_tracker.git "$HOME/courses_habit_tracker"
-            else
-              cd "$HOME/courses_habit_tracker"
-              git fetch origin
-              git checkout develop
-              git pull origin develop
             fi
 
-            cp "$HOME/.env" "$HOME/courses_habit_tracker/.env"
-
             cd "$HOME/courses_habit_tracker"
+
+            git fetch origin
+            git checkout develop
+            git pull origin develop
+
+            cp "$HOME/.env" "$HOME/courses_habit_tracker/.env"
 
             docker compose down
             docker compose up -d --build
